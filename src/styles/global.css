@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --bg: #fffefd;
+  --blue-soft: #eef6fb;
+  --blue-softer: #f7fbfd;
+  --panel: rgba(255, 255, 255, 0.9);
+  --text: #002a45;
+  --muted: #526675;
+  --line: rgba(0, 42, 69, 0.11);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #fffefd;
+    --blue-soft: #eef6fb;
+    --blue-softer: #f7fbfd;
+    --panel: rgba(255, 255, 255, 0.92);
+    --text: #002a45;
+    --muted: #526675;
+    --line: rgba(0, 42, 69, 0.11);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 16% 8%, rgba(246, 184, 0, 0.1), transparent 28rem),
+    radial-gradient(circle at 88% 18%, rgba(0, 42, 69, 0.1), transparent 28rem),
+    linear-gradient(180deg, var(--bg), var(--bg));
+  color: var(--text);
+  font-family: Inter, system-ui, sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: url("/brand/fondo.svg");
+  background-position: top right;
+  background-repeat: repeat;
+  background-size: 720px auto;
+  opacity: 0.08;
+  mask-image: linear-gradient(to bottom, black 0%, black 62%, transparent 100%);
+  pointer-events: none;
+}
+
+a,
+button,
+input,
+textarea {
+  transition: color 180ms ease, background 180ms ease, border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
+}
+
+.motion-rise {
+  animation: rise-in 700ms ease both;
+}
+
+.motion-rise:nth-child(2) {
+  animation-delay: 80ms;
+}
+
+.motion-rise:nth-child(3) {
+  animation-delay: 160ms;
+}
+
+.motion-rise:nth-child(4) {
+  animation-delay: 240ms;
+}
+
+.motion-float {
+  animation: float-soft 7s ease-in-out infinite;
+}
+
+.spin-figure {
+  animation: spin-slow 28s linear infinite;
+  transform-origin: center;
+}
+
+.brand-slot[data-loaded="true"] .brand-placeholder {
+  display: none;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
