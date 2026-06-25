@@ -1,30 +1,36 @@
 ---
 import Logo from "./Logo.astro";
+import SocialLinks from "./SocialLinks.astro";
+
+const whatsappUrl = "https://wa.me/523318103312?text=Hola%20ComputerForms%2C%20quiero%20informacion%20sobre%20sus%20soluciones.";
 ---
 
 <section id="top" class="relative isolate overflow-hidden bg-[linear-gradient(135deg,rgba(255,255,255,0.94)_0%,rgba(255,255,255,0.92)_48%,rgba(238,246,251,0.92)_100%)] px-5 pb-16 pt-6 sm:px-8 lg:px-10">
   <div class="mx-auto flex max-w-7xl items-center justify-between">
     <Logo />
-    <a href="#contacto" class="hidden rounded-full border border-cf-navy/15 bg-white px-4 py-2 text-sm font-semibold text-[var(--text)] shadow-sm hover:-translate-y-0.5 hover:border-cf-yellow sm:inline-flex">
-      Contacto
-    </a>
+    <div class="hidden items-center gap-3 sm:flex">
+      <SocialLinks />
+      <a href="#contacto" class="rounded-full border border-cf-navy/15 bg-white px-4 py-2 text-sm font-semibold text-[var(--text)] shadow-sm hover:-translate-y-0.5 hover:border-cf-yellow">
+        Contacto
+      </a>
+    </div>
   </div>
 
   <div class="mx-auto grid max-w-7xl items-center gap-12 py-16 sm:py-20 lg:grid-cols-[1.04fr_0.96fr] lg:py-24">
     <div class="motion-rise">
       <img class="motion-rise mb-6 h-auto w-72 max-w-full" src="/brand/printing-your-dreams.svg" alt="Printing your dreams" />
       <h1 class="motion-rise max-w-4xl font-display text-5xl font-bold leading-[0.96] tracking-normal text-[var(--text)] sm:text-6xl lg:text-7xl">
-        Protegemos, comunicamos y transformamos marcas.
+        Impresion de seguridad, gran formato y etiquetas para empresas.
       </h1>
       <p class="motion-rise mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)] sm:text-xl">
-        Soluciones de impresion especializada, comunicacion visual, branding, desarrollo digital y empaques para empresas e instituciones.
+        Fabricamos formas valoradas, documentos oficiales, rotulacion, publicidad exterior, etiquetas, mangas termoencogibles y empaques desde Jalisco para proyectos en Mexico.
       </p>
       <div class="motion-rise mt-9 flex flex-col gap-3 sm:flex-row">
         <a href="#contacto" class="inline-flex items-center justify-center rounded-full bg-cf-navy px-6 py-3 text-base font-bold text-white shadow-premium hover:-translate-y-0.5 hover:bg-[#073a5c] focus:outline-none focus:ring-4 focus:ring-cf-yellow/40">
-          Contactar ahora
+          Cotizar proyecto
         </a>
-        <a href="mailto:contacto@computerforms.com.mx" class="inline-flex items-center justify-center rounded-full border border-cf-navy/15 bg-white px-6 py-3 text-base font-bold text-[var(--text)] shadow-sm hover:-translate-y-0.5 hover:border-cf-red">
-          Enviar correo
+        <a href={whatsappUrl} target="_blank" rel="noreferrer" class="inline-flex items-center justify-center rounded-full border border-cf-navy/15 bg-white px-6 py-3 text-base font-bold text-[var(--text)] shadow-sm hover:-translate-y-0.5 hover:border-[#25D366]">
+          WhatsApp
         </a>
       </div>
     </div>

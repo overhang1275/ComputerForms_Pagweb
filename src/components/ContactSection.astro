@@ -1,33 +1,26 @@
 ---
+import SocialLinks from "./SocialLinks.astro";
+
 const contact = [
   ["Telefono", "+52 (33) 1810 3312", "tel:+523318103312"],
+  ["WhatsApp", "+52 (33) 1810 3312", "https://wa.me/523318103312?text=Hola%20ComputerForms%2C%20quiero%20informacion%20sobre%20sus%20soluciones."],
   ["Correo", "hola@computerforms.com.mx", "mailto:hola@computerforms.com.mx"],
   ["Direccion", "Carretera a El Castillo Km 9, Corredor Industrial El Salto, Corredor Industrial, 45680 El Salto, Jal.", null],
   ["Horario", "Lunes a viernes, 8:00 a 18:30", null],
 ];
 
-const socials = [
-  ["LinkedIn", "https://www.linkedin.com/company/computerformsmx"],
-  ["Instagram", "https://www.instagram.com/computerformsmx/"],
-  ["Facebook", "https://www.facebook.com/computerformsmx/"],
-];
-
-interface Props {
-  status?: string | null;
-}
-
-const { status } = Astro.props;
+const whatsappUrl = "https://wa.me/523318103312?text=Hola%20ComputerForms%2C%20quiero%20cotizar%20un%20proyecto.";
 ---
 
 <section id="contacto" class="bg-white px-5 py-16 sm:px-8 lg:px-10" aria-labelledby="contacto-title">
-  <div class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+  <div class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.15fr_0.85fr]">
     <div class="motion-rise rounded-[2rem] border border-cf-navy/10 bg-[linear-gradient(160deg,#002A45_0%,#073a5c_100%)] p-6 text-white shadow-[0_24px_80px_rgb(0_42_69_/_0.16)] sm:p-8">
       <p class="text-sm font-bold uppercase tracking-[0.18em] text-cf-yellow">Contacto</p>
       <h2 id="contacto-title" class="mt-3 font-display text-3xl font-bold text-white sm:text-5xl">
-        Hablemos de tu siguiente proyecto.
+        Cotiza impresion, rotulacion o etiquetas.
       </h2>
       <p class="mt-5 text-base leading-7 text-white/76">
-        Cuentanos que necesitas producir, comunicar o transformar. El equipo de ComputerForms te contactara para orientar alcance, tiempos y siguiente paso.
+        Cuentanos que producto necesitas fabricar, imprimir o instalar. Te orientamos sobre alcance, materiales, tiempos y siguiente paso.
       </p>
 
       <dl class="mt-8 grid gap-4">
@@ -41,55 +34,25 @@ const { status } = Astro.props;
         ))}
       </dl>
 
-      <div class="mt-8 flex flex-wrap gap-3" aria-label="Redes sociales">
-        {socials.map(([label, href]) => (
-          <a href={href} target="_blank" rel="noreferrer" class="rounded-full border border-white/18 bg-white/8 px-4 py-2 text-sm font-bold text-white/86 hover:-translate-y-0.5 hover:border-cf-yellow hover:text-cf-yellow">
-            {label}
-          </a>
-        ))}
+      <div class="mt-8">
+        <SocialLinks tone="dark" showLabels />
       </div>
     </div>
 
-    <form class="motion-rise rounded-[2rem] border border-cf-navy/10 bg-[#f7fbfd] p-5 shadow-[0_24px_80px_rgb(0_42_69_/_0.1)] sm:p-8" method="post" action="/api/contact" data-api-ready="contact">
-      {status === "sent" && (
-        <p class="mb-5 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-bold text-emerald-800">
-          Mensaje enviado. Te contactaremos pronto.
+    <div class="motion-rise relative self-start overflow-hidden rounded-[2rem] border border-cf-navy/10 bg-[#f7fbfd] p-6 shadow-[0_24px_80px_rgb(0_42_69_/_0.1)] sm:p-8">
+      <div class="relative z-10 max-w-xl pr-0 sm:pr-44">
+        <p class="text-sm font-bold uppercase tracking-[0.18em] text-cf-red">Atencion directa</p>
+        <h3 class="mt-3 font-display text-3xl font-bold text-[var(--text)] sm:text-4xl">
+          WhatsApp para revisar tu requerimiento.
+        </h3>
+        <p class="mt-4 text-base leading-7 text-[var(--muted)]">
+          Envia especificaciones, medidas, archivos o fotos de referencia. Respondemos por el mismo canal para avanzar la cotizacion.
         </p>
-      )}
-      {status === "error" && (
-        <p class="mb-5 rounded-2xl border border-cf-red/20 bg-cf-red/10 px-4 py-3 text-sm font-bold text-cf-red">
-          No pudimos enviar el mensaje. Intenta de nuevo o escribe a hola@computerforms.com.mx.
-        </p>
-      )}
-      <div class="grid gap-5 sm:grid-cols-2">
-        <input class="hidden" type="text" name="website" tabindex="-1" autocomplete="off" />
-        <label class="grid gap-2 text-sm font-bold text-[var(--text)]">
-          Nombre
-          <input required name="name" autocomplete="name" class="rounded-2xl border border-[var(--line)] bg-white/82 px-4 py-3 font-medium text-cf-navy outline-none focus:border-cf-yellow focus:ring-4 focus:ring-cf-yellow/20" />
-        </label>
-        <label class="grid gap-2 text-sm font-bold text-[var(--text)]">
-          Empresa
-          <input name="company" autocomplete="organization" class="rounded-2xl border border-[var(--line)] bg-white/82 px-4 py-3 font-medium text-cf-navy outline-none focus:border-cf-yellow focus:ring-4 focus:ring-cf-yellow/20" />
-        </label>
-        <label class="grid gap-2 text-sm font-bold text-[var(--text)]">
-          Correo
-          <input required type="email" name="email" autocomplete="email" class="rounded-2xl border border-[var(--line)] bg-white/82 px-4 py-3 font-medium text-cf-navy outline-none focus:border-cf-yellow focus:ring-4 focus:ring-cf-yellow/20" />
-        </label>
-        <label class="grid gap-2 text-sm font-bold text-[var(--text)]">
-          Telefono
-          <input type="tel" name="phone" autocomplete="tel" class="rounded-2xl border border-[var(--line)] bg-white/82 px-4 py-3 font-medium text-cf-navy outline-none focus:border-cf-yellow focus:ring-4 focus:ring-cf-yellow/20" />
-        </label>
-        <label class="grid gap-2 text-sm font-bold text-[var(--text)] sm:col-span-2">
-          Mensaje
-          <textarea required name="message" rows="5" class="resize-y rounded-2xl border border-[var(--line)] bg-white/82 px-4 py-3 font-medium text-cf-navy outline-none focus:border-cf-yellow focus:ring-4 focus:ring-cf-yellow/20"></textarea>
-        </label>
+        <a href={whatsappUrl} target="_blank" rel="noreferrer" class="mt-7 inline-flex w-full justify-center rounded-full bg-[#25D366] px-7 py-3 font-bold text-cf-navy shadow-[0_18px_45px_rgb(37_211_102_/_0.24)] hover:-translate-y-0.5 hover:bg-[#1fc45d] focus:outline-none focus:ring-4 focus:ring-[#25D366]/30 sm:w-auto">
+          Abrir WhatsApp
+        </a>
       </div>
-      <div class="mt-6 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-        
-        <button type="button" class="inline-flex w-full justify-center rounded-full bg-cf-navy px-7 py-3 font-bold text-white shadow-[0_18px_45px_rgb(0_42_69_/_0.18)] hover:-translate-y-0.5 hover:bg-[#073a5c] focus:outline-none focus:ring-4 focus:ring-cf-yellow/30 sm:w-auto">
-          Enviar mensaje
-        </button>
-      </div>
-    </form>
+      <img class="pointer-events-none relative z-0 mx-auto mt-6 h-52 w-full object-contain object-bottom drop-shadow-[0_18px_32px_rgb(0_42_69_/_0.16)] sm:absolute sm:bottom-0 sm:right-4 sm:mt-0 sm:h-64 sm:w-60" src="/brand/jimmy.svg" alt="Jimmy, personaje de ComputerForms" loading="lazy" />
+    </div>
   </div>
 </section>
