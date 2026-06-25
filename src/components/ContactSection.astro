@@ -9,6 +9,14 @@ const contact = [
   ["Horario", "Lunes a viernes, 8:00 a 18:30", null],
 ];
 
+const getEventName = (href) => {
+  if (!href) return undefined;
+  if (href.startsWith("https://wa.me") || href.includes("whatsapp")) return "whatsapp_click";
+  if (href.startsWith("tel:")) return "phone_click";
+  if (href.startsWith("mailto:")) return "email_click";
+  return undefined;
+};
+
 const whatsappUrl = "https://wa.me/523318103312?text=Hola%20ComputerForms%2C%20quiero%20cotizar%20un%20proyecto.";
 ---
 
@@ -28,7 +36,7 @@ const whatsappUrl = "https://wa.me/523318103312?text=Hola%20ComputerForms%2C%20q
           <div class="rounded-2xl border border-white/15 bg-white/8 p-4">
             <dt class="text-sm font-semibold text-white/62">{label}</dt>
             <dd class="mt-1 font-semibold text-white">
-              {href ? <a class="hover:text-cf-yellow" href={href}>{value}</a> : value}
+              {href ? <a class="hover:text-cf-yellow" href={href} data-umami-event={getEventName(href)}>{value}</a> : value}
             </dd>
           </div>
         ))}
@@ -48,7 +56,7 @@ const whatsappUrl = "https://wa.me/523318103312?text=Hola%20ComputerForms%2C%20q
         <p class="mt-4 text-base leading-7 text-[var(--muted)]">
           Envia especificaciones, medidas, archivos o fotos de referencia. Respondemos por el mismo canal para avanzar la cotizacion.
         </p>
-        <a href={whatsappUrl} target="_blank" rel="noreferrer" class="mt-7 inline-flex w-full justify-center rounded-full bg-[#25D366] px-7 py-3 font-bold text-cf-navy shadow-[0_18px_45px_rgb(37_211_102_/_0.24)] hover:-translate-y-0.5 hover:bg-[#1fc45d] focus:outline-none focus:ring-4 focus:ring-[#25D366]/30 sm:w-auto">
+        <a href={whatsappUrl} target="_blank" rel="noreferrer" data-umami-event="whatsapp_click" class="mt-7 inline-flex w-full justify-center rounded-full bg-[#25D366] px-7 py-3 font-bold text-cf-navy shadow-[0_18px_45px_rgb(37_211_102_/_0.24)] hover:-translate-y-0.5 hover:bg-[#1fc45d] focus:outline-none focus:ring-4 focus:ring-[#25D366]/30 sm:w-auto">
           Abrir WhatsApp
         </a>
       </div>
