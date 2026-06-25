@@ -5,9 +5,12 @@ const contact = [
   ["Telefono", "+52 (33) 1810 3312", "tel:+523318103312"],
   ["WhatsApp", "+52 (33) 1810 3312", "https://wa.me/523318103312?text=Hola%20ComputerForms%2C%20quiero%20informacion%20sobre%20sus%20soluciones."],
   ["Correo", "hola@computerforms.com.mx", "mailto:hola@computerforms.com.mx"],
-  ["Direccion", "Carretera a El Castillo Km 9, Corredor Industrial El Salto, Corredor Industrial, 45680 El Salto, Jal.", null],
+  ["Direccion", "Carretera a El Castillo Km 9, Corredor Industrial El Salto, Corredor Industrial, 45680 El Salto, Jal.", "https://www.google.com/maps/place/ComputerForms/@20.5243252,-103.2464191,17z"],
   ["Horario", "Lunes a viernes, 8:00 a 18:30", null],
 ];
+
+const mapSrc = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3736.55830892451!2d-103.2464191!3d20.5243252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842f4cbb1ab4a183%3A0xa647a5af45388c69!2sComputerForms!5e0!3m2!1ses-419!2smx!4v1782411771279!5m2!1ses-419!2smx";
+const mapTitle = "Ubicacion de ComputerForms en Google Maps";
 
 const getEventName = (href: string | null | undefined): string | undefined => {
   if (!href) return undefined;
@@ -21,7 +24,7 @@ const whatsappUrl = "https://wa.me/523318103312?text=Hola%20ComputerForms%2C%20q
 ---
 
 <section id="contacto" class="bg-white px-5 py-16 sm:px-8 lg:px-10" aria-labelledby="contacto-title">
-  <div class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+  <div class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-stretch">
     <div class="motion-rise rounded-[2rem] border border-cf-navy/10 bg-[linear-gradient(160deg,#002A45_0%,#073a5c_100%)] p-6 text-white shadow-[0_24px_80px_rgb(0_42_69_/_0.16)] sm:p-8">
       <p class="text-sm font-bold uppercase tracking-[0.18em] text-cf-yellow">Contacto</p>
       <h2 id="contacto-title" class="mt-3 font-display text-3xl font-bold text-white sm:text-5xl">
@@ -47,7 +50,20 @@ const whatsappUrl = "https://wa.me/523318103312?text=Hola%20ComputerForms%2C%20q
       </div>
     </div>
 
-    <div class="motion-rise relative self-start overflow-hidden rounded-[2rem] border border-cf-navy/10 bg-[#f7fbfd] p-6 shadow-[0_24px_80px_rgb(0_42_69_/_0.1)] sm:p-8">
+    <div class="motion-rise relative flex h-full flex-col justify-center overflow-hidden rounded-[2rem] border border-cf-navy/10 bg-[#f7fbfd] p-6 shadow-[0_24px_80px_rgb(0_42_69_/_0.1)] sm:p-8">
+      <div class="mb-8 rounded-[1.75rem] border border-cf-navy/10 bg-white shadow-[0_18px_40px_rgb(0_42_69_/_0.08)]">
+        <div class="overflow-hidden rounded-[1.75rem]">
+          <iframe
+            class="h-80 w-full sm:w-[calc(100%_+_30px)] sm:-mx-[15px] border-0"
+            src={mapSrc}
+            aria-label={mapTitle}
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen=""
+          ></iframe>
+        </div>
+      </div>
+
       <div class="relative z-10 max-w-xl pr-0 sm:pr-44">
         <p class="text-sm font-bold uppercase tracking-[0.18em] text-cf-red">Atencion directa</p>
         <h3 class="mt-3 font-display text-3xl font-bold text-[var(--text)] sm:text-4xl">
