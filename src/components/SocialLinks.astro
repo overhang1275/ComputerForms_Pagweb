@@ -17,12 +17,22 @@ const base = tone === "dark"
 ---
 
 <div class="flex flex-wrap gap-2" aria-label="Redes sociales">
-  {links.map(([label, href, path]) => (
-    <a href={href} target="_blank" rel="noreferrer" aria-label={label} class:list={["inline-flex h-10 items-center justify-center gap-2 rounded-full border px-3 text-sm font-bold shadow-sm hover:-translate-y-0.5", base, showLabels ? "" : "w-10"]}>
-      <svg class="h-4 w-4" viewBox="0 0 24 24" fill={label === "Instagram" ? "none" : "currentColor"} stroke={label === "Instagram" ? "currentColor" : "none"} stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d={path} />
-      </svg>
-      {showLabels && <span>{label}</span>}
-    </a>
-  ))}
+  {links.map(([label, href, path]) => {
+    const eventName = label === "LinkedIn"
+      ? "linkedin_click"
+      : label === "Instagram"
+        ? "instagram_click"
+        : label === "Facebook"
+          ? "facebook_click"
+          : undefined;
+
+    return (
+      <a href={href} target="_blank" rel="noreferrer" aria-label={label} data-umami-event={eventName} class:list={["inline-flex h-10 items-center justify-center gap-2 rounded-full border px-3 text-sm font-bold shadow-sm hover:-translate-y-0.5", base, showLabels ? "" : "w-10"]}>
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill={label === "Instagram" ? "none" : "currentColor"} stroke={label === "Instagram" ? "currentColor" : "none"} stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d={path} />
+        </svg>
+        {showLabels && <span>{label}</span>}
+      </a>
+    );
+  })}
 </div>
