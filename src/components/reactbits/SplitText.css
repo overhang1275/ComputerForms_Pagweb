@@ -1,0 +1,29 @@
+.split-text {
+  display: inline;
+}
+
+.split-text-part {
+  display: inline-block;
+  opacity: var(--split-from-opacity);
+  transform: translateY(var(--split-from-y));
+}
+
+.split-text-part[data-visible="true"] {
+  animation: split-text-rise var(--split-duration) cubic-bezier(0.22, 1, 0.36, 1) var(--split-delay) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .split-text-part,
+  .split-text-part[data-visible="true"] {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes split-text-rise {
+  to {
+    opacity: var(--split-to-opacity);
+    transform: translateY(var(--split-to-y));
+  }
+}

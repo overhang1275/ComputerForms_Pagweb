@@ -1,0 +1,25 @@
+.gradient-text {
+  display: inline;
+  background: var(--gradient-text);
+  background-size: 220% 100%;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: gradient-text-shift var(--gradient-speed) linear infinite;
+}
+
+.gradient-text-border {
+  -webkit-text-stroke: 1px rgba(0, 42, 69, 0.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gradient-text {
+    animation: none;
+  }
+}
+
+@keyframes gradient-text-shift {
+  to {
+    background-position: 220% 0;
+  }
+}

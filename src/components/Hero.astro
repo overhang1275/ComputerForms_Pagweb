@@ -1,12 +1,14 @@
 ---
 import Logo from "./Logo.astro";
 import SocialLinks from "./SocialLinks.astro";
+import GradientText from "./reactbits/GradientText";
+import "./reactbits/GradientText.css";
 
 const whatsappUrl = "https://wa.me/523318103312?text=Hola%20ComputerForms%2C%20quiero%20informacion%20sobre%20sus%20soluciones.";
 ---
 
 <section id="top" class="relative isolate overflow-hidden bg-[linear-gradient(135deg,rgba(255,255,255,0.94)_0%,rgba(255,255,255,0.92)_48%,rgba(238,246,251,0.92)_100%)] px-5 pb-16 pt-6 sm:px-8 lg:px-10">
-  <div class="mx-auto flex max-w-7xl items-center justify-between">
+  <div class="relative z-10 mx-auto flex max-w-7xl items-center justify-between">
     <Logo />
     <div class="hidden items-center gap-3 sm:flex">
       <SocialLinks />
@@ -16,11 +18,13 @@ const whatsappUrl = "https://wa.me/523318103312?text=Hola%20ComputerForms%2C%20q
     </div>
   </div>
 
-  <div class="mx-auto grid max-w-7xl items-center gap-12 py-16 sm:py-20 lg:grid-cols-[1.04fr_0.96fr] lg:py-24">
+  <div class="relative z-10 mx-auto grid max-w-7xl items-center gap-12 py-16 sm:py-20 lg:grid-cols-[1.04fr_0.96fr] lg:py-24">
     <div class="motion-rise">
       <img class="motion-rise mb-6 h-auto w-72 max-w-full" src="/brand/printing-your-dreams.svg" alt="Printing your dreams" />
       <h1 class="motion-rise max-w-4xl font-display text-5xl font-bold leading-[0.96] tracking-normal text-[var(--text)] sm:text-6xl lg:text-7xl">
-        Impresion de seguridad, gran formato y etiquetas para empresas.
+        <GradientText client:load colors={["#002A45", "#0B5F8A", "#167DA8", "#002A45"]} animationSpeed={8} showBorder={false}>
+          Impresion de seguridad, gran formato y etiquetas para empresas.
+        </GradientText>
       </h1>
       <p class="motion-rise mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)] sm:text-xl">
         Fabricamos formas valoradas, documentos oficiales, rotulacion, publicidad exterior, etiquetas, mangas termoencogibles y empaques desde Jalisco para proyectos en Mexico.
