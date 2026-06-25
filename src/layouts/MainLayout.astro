@@ -4,35 +4,66 @@ import "../styles/global.css";
 interface Props {
   title?: string;
   description?: string;
+  canonical?: string;
+  ogImage?: string;
 }
 
 const {
-  title = "ComputerForms | Impresion de seguridad, gran formato y etiquetas",
-  description = "Impresion especializada en Jalisco: formas valoradas, documentos oficiales, gran formato, rotulacion, etiquetas, mangas termoencogibles y empaques con enfoque sostenible.",
+  title = "ComputerForms | Impresión de seguridad, gran formato y etiquetas",
+  description = "Impresión especializada en Jalisco: formas valoradas, documentos oficiales, gran formato, rotulación, etiquetas, mangas termoencogibles y empaques con enfoque sostenible.",
+  canonical = Astro.url.href,
+  ogImage = "/brand/og.jpg",
 } = Astro.props;
----
 
+const siteName = "ComputerForms";
+const absoluteOgImage = new URL(ogImage, Astro.url).href;
+---
 <!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#002A45" />
+
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml" />
+
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
     <meta property="og:locale" content="es_MX" />
-    <meta property="og:image" content="/brand/og.svg" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:image" content={absoluteOgImage} />
+    <meta property="og:image:alt" content={title} />
+
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="/brand/og.svg" />
-    <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={absoluteOgImage} />
+    <meta name="twitter:image:alt" content={title} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
-    <script is:inline defer src="https://umami.computerforms.mx/script.js" data-website-id="d33fcbb3-22ed-45df-9b13-75fc23a6f71e"></script>
-    <script is:inline defer src="https://umami.computerforms.mx/recorder.js" data-website-id="d33fcbb3-22ed-45df-9b13-75fc23a6f71e"></script>
-    <title>{title}</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      is:inline
+      defer
+      src="https://umami.computerforms.mx/script.js"
+      data-website-id="d33fcbb3-22ed-45df-9b13-75fc23a6f71e"></script>
+    <script
+      is:inline
+      defer
+      src="https://umami.computerforms.mx/recorder.js"
+      data-website-id="d33fcbb3-22ed-45df-9b13-75fc23a6f71e"></script>
   </head>
   <body>
     <slot />
