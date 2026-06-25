@@ -9,7 +9,7 @@ const contact = [
   ["Horario", "Lunes a viernes, 8:00 a 18:30", null],
 ];
 
-const getEventName = (href) => {
+const getEventName = (href: string | null | undefined): string | undefined => {
   if (!href) return undefined;
   if (href.startsWith("https://wa.me") || href.includes("whatsapp")) return "whatsapp_click";
   if (href.startsWith("tel:")) return "phone_click";
