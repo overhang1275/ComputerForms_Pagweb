@@ -4,19 +4,19 @@ import SplitText from "./reactbits/SplitText";
 const services = [
   {
     name: "Formas",
-    text: "Conceptualizacion, diseno, fabricacion e impresion de documentos oficiales, formas valoradas y productos de seguridad.",
+    text: "Conceptualización, diseño, desarrollo e impresión de documentos, formas y productos de seguridad para operación, control e identificación.",
     path: "M5 11h38v26H5z M15 18h18 M15 26h18 M15 34h12",
-    items: ["Formas valoradas, comerciales, laser y continuas", "Titulos, actas, certificados escolares y vehiculares", "Hologramas, placas, boletas electorales y cedulas", "Credenciales, identificaciones y boletos de acceso", "Libros, revistas, braille, correo directo y formatos inteligentes"],
+    items: ["Formas valoradas, comerciales, láser, continuas e inteligentes", "Títulos, actas, certificados escolares y de control vehicular", "Hologramas, placas, boletas electorales y cédulas", "Credenciales, identificaciones, boletos de acceso y sorteos", "Libros, revistas, aplicación braille y correo directo"],
   },
   {
     name: "Gran formato",
-    text: "Produccion, instalacion y rotulacion para comunicacion visual en exteriores, interiores, vehiculos y puntos de venta.",
+    text: "Producción, instalación y rotulación de soluciones visuales para exteriores, interiores, vehículos, espacios comerciales y puntos de venta.",
     path: "M5 10h38v24H5z M12 38h24 M17 18l6 7 5-4 8 9",
-    items: ["Rotulacion vehicular, exterior e interior", "Stands, mobiliario POP, exhibidores y cajas de luz", "Lonas, carteles, banners, posters y espectaculares", "Letreros canteados, luminosos y reconocimientos", "Decoracion, interiorismo, senaletica y cuadros canvas"],
+    items: ["Rotulación vehicular, exterior e interior", "Stands, mobiliario POP, exhibidores y cajas de luz", "Lonas, carteles, banners, posters y espectaculares", "Letreros canteados, luminosos y reconocimientos", "Decoración, interiorismo, señalética y cuadros canvas"],
   },
   {
     name: "Etiquetas / Mangas",
-    text: "Desarrollo, impresion y acabado de etiquetas, mangas termoencogibles y empaques para producto.",
+    text: "Desarrollo, impresión y acabado de etiquetas, mangas termoencogibles y empaques diseñados para proteger, identificar y destacar productos.",
     path: "M8 12h18l14 14-14 14L8 22z M18 21h.1",
     items: ["Etiquetas inteligentes, autoadheribles y de seguridad", "Etiquetas textiles, RFID, para vinos y licores", "Sellos de evidencia tamper evident", "Mangas termoencogibles para envases", "Cajas de empaque y acabados para anaquel"],
   },
@@ -26,11 +26,11 @@ const services = [
 <section class="relative overflow-hidden bg-[linear-gradient(180deg,rgba(238,246,251,0.9)_0%,rgba(249,252,253,0.94)_100%)] px-5 py-12 sm:px-8 sm:py-16 lg:px-10" aria-labelledby="servicios-title">
   <div class="mx-auto max-w-7xl">
     <div class="max-w-3xl">
-      <p class="text-xs font-bold uppercase tracking-[0.18em] text-cf-red sm:text-sm">Lineas de negocio</p>
+      <p class="text-xs font-bold uppercase tracking-[0.18em] text-cf-red sm:text-sm">LÍNEAS DE NEGOCIO</p>
       <h2 id="servicios-title" class="mt-3 font-display text-2xl font-bold leading-tight text-[var(--text)] sm:text-5xl">
         <SplitText
           client:visible
-          text="Produccion impresa especializada para operacion, promocion y empaque."
+          text="Impresión especializada de alto impacto para impulsar tu marca y tu operación."
           delay={35}
           duration={0.8}
           splitType="words"
@@ -40,22 +40,34 @@ const services = [
           rootMargin="-80px"
         />
       </h2>
+      <p class="mt-5 max-w-2xl text-base leading-7 text-[var(--muted)] sm:text-lg">
+        Desde materiales promocionales hasta empaque, identificación, seguridad y gran formato: soluciones pensadas para que tu negocio destaque.
+      </p>
     </div>
-    <div class="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="mt-8 grid gap-5 sm:mt-10 lg:grid-cols-3">
       {services.map(({ name, text, path, items }) => (
-        <article class="motion-rise group rounded-2xl border border-cf-navy/10 bg-white p-4 shadow-sm hover:-translate-y-1 hover:shadow-premium sm:p-5">
-          <div class="flex items-center gap-3">
-            <svg class="h-9 w-9 shrink-0 text-cf-navy group-hover:text-cf-red sm:h-10 sm:w-10" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <article class="motion-rise group flex min-h-full flex-col rounded-lg border border-cf-navy/10 bg-white/92 p-5 shadow-[0_18px_48px_rgb(0_42_69_/_0.07)] backdrop-blur hover:-translate-y-1 hover:border-cf-navy/18 hover:shadow-[0_24px_70px_rgb(0_42_69_/_0.12)] sm:p-6">
+          <div class="flex items-start justify-between gap-5">
+            <div>
+              <p class="text-xs font-bold uppercase tracking-[0.16em] text-cf-red">Linea</p>
+              <h3 class="mt-2 font-display text-2xl font-bold leading-tight text-[var(--text)]">{name}</h3>
+            </div>
+            <span class="grid h-11 w-11 shrink-0 place-items-center rounded-md bg-[#eef6fb] text-cf-navy ring-1 ring-cf-navy/10 group-hover:text-cf-red">
+              <svg class="h-6 w-6" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d={path} />
-            </svg>
-            <h3 class="font-display text-xl font-bold text-[var(--text)]">{name}</h3>
+              </svg>
+            </span>
           </div>
-          <p class="mt-3 text-sm leading-6 text-[var(--muted)]">{text}</p>
-          <ul class="mt-5 grid gap-2 text-sm font-semibold leading-5 text-[var(--text)]">
+
+          <p class="mt-5 text-[15px] leading-7 text-[var(--muted)]">{text}</p>
+
+          <div class="my-6 h-px bg-gradient-to-r from-cf-navy/12 via-cf-navy/5 to-transparent"></div>
+
+          <ul class="divide-y divide-cf-navy/10 border-y border-cf-navy/10 text-sm leading-5 text-[var(--text)]">
             {items.map((item) => (
-              <li class="flex gap-2">
-                <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cf-red"></span>
-                <span>{item}</span>
+              <li class="grid grid-cols-[0.75rem_1fr] gap-3 py-3">
+                <span class="mt-2 h-1.5 w-1.5 rounded-full bg-cf-yellow"></span>
+                <span class="font-medium text-cf-navy/86">{item}</span>
               </li>
             ))}
           </ul>

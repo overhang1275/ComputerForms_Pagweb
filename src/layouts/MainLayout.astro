@@ -9,14 +9,47 @@ interface Props {
 }
 
 const {
-  title = "ComputerForms | Impresión de seguridad, gran formato y etiquetas",
-  description = "Impresión especializada en Jalisco: formas valoradas, documentos oficiales, gran formato, rotulación, etiquetas, mangas termoencogibles y empaques con enfoque sostenible.",
-  canonical = Astro.url.href,
-  ogImage = "/brand/og.jpg",
+  title = "ComputerForms | Impresión especializada, gran formato y etiquetas",
+  description = "Impresión especializada de alto impacto para impulsar tu marca y tu operación: formas, documentos de seguridad, gran formato, rotulación, etiquetas, mangas y empaque.",
+  canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href,
+  ogImage = "/brand/og.svg",
 } = Astro.props;
 
 const siteName = "ComputerForms";
 const absoluteOgImage = new URL(ogImage, Astro.url).href;
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: siteName,
+  url: canonical,
+  image: absoluteOgImage,
+  description,
+  telephone: "+52 33 1810 3312",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Carretera a El Castillo Km 9, Corredor Industrial El Salto",
+    addressLocality: "El Salto",
+    addressRegion: "Jalisco",
+    postalCode: "45680",
+    addressCountry: "MX",
+  },
+  openingHours: "Mo-Fr 08:00-18:30",
+  sameAs: [
+    "https://www.instagram.com/computerformsmx/",
+    "https://www.facebook.com/computerformsmx/",
+    "https://www.linkedin.com/company/computerformsmx",
+  ],
+  knowsAbout: [
+    "impresion especializada",
+    "impresion de seguridad",
+    "formas valoradas e inteligentes",
+    "documentos oficiales",
+    "gran formato y rotulacion",
+    "etiquetas autoadheribles y RFID",
+    "mangas termoencogibles",
+    "empaque",
+  ],
+};
 ---
 <!doctype html>
 <html lang="es">
@@ -26,11 +59,15 @@ const absoluteOgImage = new URL(ogImage, Astro.url).href;
     <title>{title}</title>
 
     <meta name="description" content={description} />
+    <meta name="keywords" content="impresion especializada, impresion de seguridad, formas valoradas, gran formato, rotulacion, etiquetas, mangas termoencogibles, empaque, ComputerForms, Jalisco" />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#002A45" />
 
     <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/brand/favicon.ico" sizes="any" />
     <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/brand/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/brand/favicon.png" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
@@ -64,6 +101,7 @@ const absoluteOgImage = new URL(ogImage, Astro.url).href;
       defer
       src="https://umami.computerforms.mx/recorder.js"
       data-website-id="d33fcbb3-22ed-45df-9b13-75fc23a6f71e"></script>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
   <body>
     <slot />

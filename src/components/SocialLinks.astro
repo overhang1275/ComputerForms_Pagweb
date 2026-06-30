@@ -16,7 +16,7 @@ const base = tone === "dark"
   : "border-cf-navy/12 bg-white text-cf-navy hover:border-cf-red hover:text-cf-red";
 ---
 
-<div class="flex flex-wrap gap-2" aria-label="Redes sociales">
+<div class="flex flex-wrap gap-3" aria-label="Redes sociales">
   {links.map(([label, href, path]) => {
     const eventName = label === "LinkedIn"
       ? "linkedin_click"
@@ -27,8 +27,8 @@ const base = tone === "dark"
           : undefined;
 
     return (
-      <a href={href} target="_blank" rel="noreferrer" aria-label={label} data-umami-event={eventName} class:list={["inline-flex h-10 items-center justify-center gap-2 rounded-full border px-3 text-sm font-bold shadow-sm hover:-translate-y-0.5", base, showLabels ? "" : "w-10"]}>
-        <svg class="h-4 w-4" viewBox="0 0 24 24" fill={label === "Instagram" ? "none" : "currentColor"} stroke={label === "Instagram" ? "currentColor" : "none"} stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <a href={href} target="_blank" rel="noreferrer" aria-label={label} data-umami-event={eventName} class:list={["inline-flex min-h-11 items-center justify-center gap-2 rounded-full border px-4 text-sm font-bold shadow-sm hover:-translate-y-0.5", base, showLabels ? "" : "w-11 px-0"]}>
+        <svg class:list={[showLabels ? "h-4 w-4" : "h-5 w-5"]} viewBox="0 0 24 24" fill={label === "Instagram" ? "none" : "currentColor"} stroke={label === "Instagram" ? "currentColor" : "none"} stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d={path} />
         </svg>
         {showLabels && <span>{label}</span>}
